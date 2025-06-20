@@ -1,0 +1,188 @@
+.homework-card {
+  background: var(--card-bg, white);
+  color: var(--text-color, black);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.homework-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.homework-card h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+}
+
+.homework-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.homework-card.done .status {
+  color: #28a745;
+}
+
+.homework-card.in-progress .status {
+  color: #ffc107;
+}
+
+.homework-card.overdue .status {
+  color: #dc3545;
+}
+.homework-card {
+  background: var(--card-bg, white);
+  color: var(--text-color, #111);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.homework-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.homework-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.homework-card .description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.2rem 0 0.8rem 0;
+}
+
+.homework-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.homework-card .status {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.homework-card.done .status {
+  color: #28a745;
+}
+.homework-card.in-progress .status {
+  color: #ffc107;
+}
+.homework-card.overdue .status {
+  color: #dc3545;
+}
+.homework-card {
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #111);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  width: 250px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.homework-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Стили для статусов */
+.homework-card.done {
+  border-left: 6px solid #28a745;
+}
+
+.homework-card.in-progress {
+  border-left: 6px solid #17a2b8;
+}
+
+.homework-card.overdue {
+  border-left: 6px solid #dc3545;
+}
+
+.homework-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.homework-card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+.deadline {
+  font-weight: bold;
+}
+
+.deadline-green {
+  color: #28a745;
+}
+
+.deadline-yellow {
+  color: #ffc107;
+}
+
+.deadline-red {
+  color: #dc3545;
+}
+.deadline {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.deadline-green {
+  color: #28a745;
+}
+
+.deadline-yellow {
+  color: #ffc107;
+}
+
+.deadline-red {
+  color: #dc3545;
+}
+select {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

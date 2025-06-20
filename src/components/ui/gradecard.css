@@ -1,0 +1,75 @@
+.grade-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 260px;
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.grade-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.grade-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.grade-card p {
+  margin: 0.2rem 0;
+}
+
+.grade-values {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.grade-values p {
+  margin: 4px 0;
+}
+
+.grades-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
+
+/* Статусы */
+.grade-status {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.grade-status.light {
+  color: #444;
+}
+
+.grade-status.dark {
+  color: #ddd;
+}
+
+.grade-status.excellent {
+  color: #28a745; /* зеленый */
+}
+
+.grade-status.good {
+  color: #17a2b8; /* синий */
+}
+
+.grade-status.satisfactory {
+  color: #ffc107; /* оранжевый */
+}
+
+.grade-status.unsatisfactory {
+  color: #dc3545; /* красный */
+}

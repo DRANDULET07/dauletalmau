@@ -1,0 +1,39 @@
+/* Общие стили для событий */
+.fc .fc-daygrid-event {
+  font-size: 14px;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* === ТЁМНАЯ ТЕМА === */
+body.dark .fc {
+  background-color: #1e1e1e;
+}
+
+/* Цвет названий дней недели (ВС, ПН...) */
+body.dark .fc .fc-col-header-cell {
+  background-color: #1e1e1e;
+}
+
+body.dark .fc .fc-col-header-cell-cushion,
+body.dark .fc .fc-col-header-cell-cushion a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Цвет номеров дней */
+body.dark .fc .fc-daygrid-day-number {
+  color: #cccccc !important;
+}
+
+/* Подсветка сегодняшнего дня */
+body.dark .fc .fc-daygrid-day.fc-day-today {
+  background-color: #333 !important;
+}
+
+/* === СВЕТЛАЯ ТЕМА (опционально) === */
+body.light .fc .fc-daygrid-day.fc-day-today {
+  background-color: #fdf5d7 !important;
+}
