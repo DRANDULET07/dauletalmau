@@ -1,7 +1,8 @@
 // RegisterScreen.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css";
+// import "../index.css"; хз зач тебе импортировать индекс-css, если у тебя стиль в login-css
+import "./login.css";
 
 export default function RegisterScreen() {
   const [form, setForm] = useState({

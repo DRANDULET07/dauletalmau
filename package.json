@@ -1,6 +1,19 @@
 {
   "name": "almalu-app",
   "version": "0.0.1",
+  "description": "React + Vite prototype for students",
+  "homepage": "https://github.com/DRANDULET07/dauletalmau#readme",
+  "bugs": {
+    "url": "https://github.com/DRANDULET07/dauletalmau/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DRANDULET07/dauletalmau.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -20,6 +33,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
-    "vite": "^6.0.0"
+    "vite": "^6.3.5"
   }
 }

@@ -26,7 +26,8 @@ body.dark {
 
 .app-container {
   display: flex;
-  height: 100vh;
+  height: 100%; /* поставил % вместо vh, но кнопка  "Темная тема" у тебя будет всегда снизу" */
+  overflow: hidden;
 }
 
 .sidebar {
