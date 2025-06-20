@@ -27,7 +27,7 @@ export default function LoginScreen({ setLoggedUser }) {
     <div
       className="content"
       style={{
-        display: "flex",
+        display: "grid", // flex было -> grid поставил
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
