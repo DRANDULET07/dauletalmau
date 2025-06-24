@@ -1,8 +1,13 @@
 .chat-container {
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0rem ;
   padding: 2rem;
   color: white;
+  width: 60%;
+  padding-top:0 ;
+
 }
 
 h2 {
@@ -11,16 +16,27 @@ h2 {
 }
 
 .chat-window {
+  flex: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
+  padding-bottom: 100px;
+  padding-right: 8px;
+  
+  /* Скрытие скроллбара */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+}
+
+.chat-window::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .chat-bubble {
   display: flex;
   align-items: flex-end;
-  max-width: 70%;
+  max-width: 100%;
   padding: 0.5rem;
   border-radius: 12px;
   background-color: #2e2e2e;
@@ -73,18 +89,23 @@ h2 {
 
 .input-area {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  bottom: 0;
+  position:fixed;
+  gap: 1rem;
+  width:1200px;
 }
 
 .input-area textarea {
-  height: 80px;
+  flex: 1;
+  max-height: 60px;
+  padding: 5px 12px;
+  border: 1px solid #ccc;
   resize: none;
-  padding: 0.5rem;
-  background: #1e1e1e;
-  color: white;
-  border: 1px solid #555;
-  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.2s;
+  background-color: #2e2e2e;
 }
 
 .input-area input[type="file"] {
@@ -93,6 +114,10 @@ h2 {
   border: 1px solid #555;
   border-radius: 8px;
   padding: 0.3rem;
+  max-height: 30px;
+  max-width: 30px;
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 .input-area button {
@@ -104,4 +129,7 @@ h2 {
   font-weight: bold;
   cursor: pointer;
   align-self: flex-end;
+  max-width: 50px; /* иконку поставить */
+
 }
+
