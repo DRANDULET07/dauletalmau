@@ -1,6 +1,12 @@
 // App.jsx
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  Navigate,
+} from "react-router-dom";
 import "./index.css";
 import logo from "./assets/logo.jpg";
 
@@ -12,7 +18,8 @@ import HomeworkScreen from "./screens/src/HomeworkScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import AdminPanel from "./screens/AdminPanel"; // 👈 добавляем
+import AdminPanel from "./screens/AdminPanel";
+import ChatPage from "./screens/ChatPage"; // 👈 ДОБАВИЛ
 
 function Sidebar({ toggleTheme, theme, user }) {
   return (
@@ -20,16 +27,21 @@ function Sidebar({ toggleTheme, theme, user }) {
       <Link to="/" className="logo-link">
         <img src={logo} alt="AlmaU Logo" className="logo-img" />
       </Link>
-      <h2><Link to="/" className="logo-text">AlmaU</Link></h2>
+      <h2>
+        <Link to="/" className="logo-text">
+          AlmaU
+        </Link>
+      </h2>
       <nav>
         <Link to="/profile">Личный кабинет</Link>
         <Link to="/grades">Оценки</Link>
         <Link to="/homework">Домашка</Link>
         <Link to="/schedule">Расписание</Link>
-        {user?.role === "admin" && <Link to="/admin">Админка</Link>} {/* 👈 только для админа */}
+        <Link to="/chat">Чат</Link> {/* 👈 ДОБАВИЛ */}
+        {user?.role === "admin" && <Link to="/admin">Админка</Link>}
       </nav>
       <button onClick={toggleTheme}>
-        Сменить тему ({theme === "light" ? "Светлая" : "Тёмная"}) {/* здесь можно вместе текста, вставить svg иконку */}
+        Сменить тему ({theme === "light" ? "Светлая" : "Тёмная"})
       </button>
     </div>
   );
@@ -56,7 +68,13 @@ export default function App() {
   return (
     <Router>
       <div className="app-container">
-        {isLoggedIn && <Sidebar toggleTheme={toggleTheme} theme={theme} user={loggedUser} />}
+        {isLoggedIn && (
+          <Sidebar
+            toggleTheme={toggleTheme}
+            theme={theme}
+            user={loggedUser}
+          />
+        )}
         <Routes>
           <Route
             path="/"
@@ -82,6 +100,10 @@ export default function App() {
           <Route
             path="/schedule"
             element={isLoggedIn ? <ScheduleScreen /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/chat"
+            element={isLoggedIn ? <ChatPage /> : <Navigate to="/login" />}
           />
           <Route
             path="/admin"

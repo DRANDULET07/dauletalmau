@@ -22,18 +22,6 @@ export default function ProfileScreen() {
     if (savedAvatar) setAvatar(savedAvatar);
   }, []);
 
-  const handleEditClick = () => setIsEditing(true);
-  const handleCancel = () => {
-    setFormData({
-      email: "example@almau.edu.kz",
-      group: "ИТ-2206",
-      faculty: "Факультет цифровых технологий",
-    });
-    setIsEditing(false);
-  };
-  const handleSave = () => {
-    setIsEditing(false);
-  };
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -59,51 +47,51 @@ export default function ProfileScreen() {
   return (
     <div className="content">
       <h2>Личный кабинет</h2>
-      <div className="profile-container">
-        <div className="avatar-container">
-          <div className="avatar-edit">
-            <div className="avatar-circle">
-              {avatar ? <img src={avatar} alt="avatar" /> : <span>{initials}</span>}
-            </div>
-            <div className="avatar-overlay">
-              <label htmlFor="avatar-upload" title="Загрузить">
-                <Camera size={18} />
-              </label>
-              <input
-                id="avatar-upload"
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleAvatarUpload}
-              />
-            </div>
-          </div>
+
+      <div className="profile-card">
+        <div style={{ position: "relative" }}>
+          {avatar ? (
+            <img src={avatar} alt="avatar" />
+          ) : (
+            <div className="avatar-circle">{initials}</div>
+          )}
+          <label htmlFor="avatar-upload" className="avatar-upload-icon" title="Загрузить аватар">
+            <Camera size={18} />
+          </label>
+          <input
+            id="avatar-upload"
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleAvatarUpload}
+          />
         </div>
 
         {avatar && (
-          <button onClick={handleAvatarDelete} className="delete-avatar-btn" title="Удалить аватар">
-            <Trash2 size={16} /> Удалить аватар
+          <button onClick={handleAvatarDelete} className="delete-avatar-btn">
+            <Trash2 size={14} /> Удалить аватар
           </button>
         )}
 
+        <h2>{storedUser.name} {storedUser.surname}</h2>
+        <p><span className="label">Логин:</span> {storedUser.username}</p>
+        <p><span className="label">Роль:</span> {storedUser.role}</p>
+
         {isEditing ? (
-          <div className="edit-form">
+          <>
             <input name="email" value={formData.email} onChange={handleChange} />
             <input name="group" value={formData.group} onChange={handleChange} />
             <input name="faculty" value={formData.faculty} onChange={handleChange} />
-          </div>
+          </>
         ) : (
           <>
-            <p><User size={14} /> <strong>{storedUser.name} {storedUser.surname}</strong></p>
-            <p><strong>Логин:</strong> {storedUser.username}</p>
-            <p><strong>Роль:</strong> {storedUser.role}</p>
-            <p><strong>Почта:</strong> <span className="blue">{formData.email}</span></p>
-            <p><strong>Группа:</strong> {formData.group}</p>
-            <p><strong>Факультет:</strong> {formData.faculty}</p>
+            <p><span className="label">Почта:</span> {formData.email}</p>
+            <p><span className="label">Группа:</span> {formData.group}</p>
+            <p><span className="label">Факультет:</span> {formData.faculty}</p>
           </>
         )}
 
-        <div className="progress-section">
+        <div className="progress-container">
           <CircularProgressbar
             value={80}
             text={`80%`}
@@ -115,19 +103,19 @@ export default function ProfileScreen() {
           />
         </div>
 
-        <p>Выполнено домашних заданий: 12</p>
+        <p style={{ marginTop: "0.5rem" }}>Выполнено домашних заданий: 12</p>
 
-        <div className="action-buttons">
+        <div className="actions">
           {isEditing ? (
             <>
-              <button className="edit-btn" onClick={handleSave}>Сохранить</button>
-              <button className="logout-btn" onClick={handleCancel}>Отмена</button>
+              <button className="edit" onClick={() => setIsEditing(false)}>Сохранить</button>
+              <button className="logout" onClick={() => setIsEditing(false)}>Отмена</button>
             </>
           ) : (
             <>
-              <button className="edit-btn" onClick={handleEditClick}>Редактировать</button>
+              <button className="edit" onClick={() => setIsEditing(true)}>Редактировать</button>
               <button
-                className="logout-btn"
+                className="logout"
                 onClick={() => {
                   localStorage.removeItem("loggedUser");
                   window.location.href = "/login";

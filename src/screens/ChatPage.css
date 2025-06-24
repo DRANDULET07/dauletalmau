@@ -1,0 +1,107 @@
+.chat-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.chat-bubble {
+  display: flex;
+  align-items: flex-end;
+  max-width: 70%;
+  padding: 0.5rem;
+  border-radius: 12px;
+  background-color: #2e2e2e;
+  position: relative;
+}
+
+.chat-bubble.left {
+  align-self: flex-start;
+  background-color: #3c3c3c;
+  flex-direction: row;
+}
+
+.chat-bubble.right {
+  align-self: flex-end;
+  background-color: #1e88e5;
+  flex-direction: row-reverse;
+}
+
+.bubble-content {
+  padding: 0.5rem 1rem;
+  color: white;
+  word-break: break-word;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+}
+
+.meta {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: #90caf9;
+  text-decoration: none;
+}
+
+.file-link:hover {
+  text-decoration: underline;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-area textarea {
+  height: 80px;
+  resize: none;
+  padding: 0.5rem;
+  background: #1e1e1e;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+
+.input-area input[type="file"] {
+  background: none;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 0.3rem;
+}
+
+.input-area button {
+  background-color: #43a047;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}

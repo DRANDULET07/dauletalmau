@@ -34,3 +34,41 @@
   left: 0;
   top: 0;
 }
+/* admin.css */
+
+.content {
+  padding: 20px;
+  color: var(--text-color); /* динамический цвет текста */
+}
+
+.admin-section {
+  background-color: var(--card-bg);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #007bff;
+}
+
+.admin-section h3 {
+  margin-bottom: 10px;
+}
+
+.admin-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-section li {
+  margin-bottom: 10px;
+}
+
+/* Динамические переменные для тем */
+body.light {
+  --text-color: #000;
+  --card-bg: #f9f9f9;
+}
+
+body.dark {
+  --text-color: #fff;
+  --card-bg: #1c1c1c;
+}
