@@ -103,3 +103,43 @@ body.dark {
 .send-btn:hover {
   background-color: #0056b3;
 }
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .admin-section {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
+
+  .admin-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .admin-section li {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .admin-input,
+  .admin-textarea {
+    font-size: 16px; /* Предотвращает зум на iOS */
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .admin-textarea {
+    min-height: 100px;
+  }
+
+  .send-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+}

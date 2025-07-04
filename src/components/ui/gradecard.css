@@ -1,75 +1,147 @@
 .grade-card {
   background: var(--card-bg);
   color: var(--text-color);
-  padding: 1.5rem;
+  padding: 2rem;
   margin: 1rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
   text-align: center;
-  width: 260px;
+  width: 320px;
   flex-shrink: 0;
-  transition: background 0.3s, color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
   cursor: pointer;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.grade-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
 .grade-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
 }
 
 .grade-card h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .grade-card p {
-  margin: 0.2rem 0;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--secondary-color);
 }
 
 .grade-values {
-  margin-top: 1rem;
-  font-size: 14px;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  background: rgba(37, 99, 235, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .grade-values p {
-  margin: 4px 0;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.grade-values p:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.1rem;
 }
 
 .grades-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem;
 }
 
 /* Статусы */
 .grade-status {
-  margin-top: 0.5rem;
-  font-weight: bold;
-  font-size: 0.95rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 .grade-status.light {
-  color: #444;
+  background-color: #f1f5f9;
+  color: #475569;
 }
 
 .grade-status.dark {
-  color: #ddd;
+  background-color: #334155;
+  color: #e2e8f0;
 }
 
 .grade-status.excellent {
-  color: #28a745; /* зеленый */
+  background-color: #d1fae5;
+  color: #065f46;
 }
 
 .grade-status.good {
-  color: #17a2b8; /* синий */
+  background-color: #dbeafe;
+  color: #1e40af;
 }
 
 .grade-status.satisfactory {
-  color: #ffc107; /* оранжевый */
+  background-color: #fef3c7;
+  color: #92400e;
 }
 
 .grade-status.unsatisfactory {
-  color: #dc3545; /* красный */
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .grades-grid {
+    max-width: 100vw;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  .grade-card {
+    margin: 0.5rem 0 0.5rem 0;
+    max-width: 100vw;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  .grade-card h3 {
+    font-size: 1rem;
+  }
+
+  .grade-values {
+    font-size: 1.1rem;
+  }
+
+  .grade-status {
+    font-size: 0.9rem;
+  }
 }

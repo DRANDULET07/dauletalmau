@@ -73,3 +73,48 @@
   display: block;
   margin-top: 0.5rem;
 }
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .news-screen {
+    padding: 1rem;
+  }
+
+  .add-news-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+
+  .news-form input,
+  .news-form textarea {
+    font-size: 16px; /* Предотвращает зум на iOS */
+    padding: 0.8rem;
+  }
+
+  .news-form button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+
+  .news-card {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .news-card img {
+    width: 100%;
+    height: 150px;
+    align-self: center;
+  }
+
+  .news-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .news-content small {
+    font-size: 0.85rem;
+  }
+}

@@ -5,26 +5,29 @@ import "./Sidebar.css";
 import logo from "./assets/logo.jpg";
 import { X } from "lucide-react";
 
-export default function Sidebar({ toggleTheme, theme, user, isOpen, setIsOpen }) {
+export default function Sidebar({ toggleTheme, theme, user, isOpen, setIsOpen, isMobile }) {
   return (
-    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
-      <button className="close-button" onClick={() => setIsOpen(false)}>
-        <X size={20} />
-      </button>
+    <aside className={`sidebar ${isMobile ? (isOpen ? "mobile-open" : "") : "open"}`}>
+      {/* Кнопка закрытия показывается только на мобильных */}
+      {isMobile && (
+        <button className="close-button" onClick={() => setIsOpen(false)}>
+          <X size={20} />
+        </button>
+      )}
       <div className="sidebar-header">
         <img src={logo} alt="logo" className="logo" />
         <h3>AlmaU</h3>
       </div>
       <nav className="sidebar-links">
-        <Link to="/" onClick={() => setIsOpen(false)}>🏠 Главная</Link>
-        <Link to="/profile" onClick={() => setIsOpen(false)}>👤 Профиль</Link>
-        <Link to="/grades" onClick={() => setIsOpen(false)}>📊 Оценки</Link>
-        <Link to="/homework" onClick={() => setIsOpen(false)}>📘 Домашка</Link>
-        <Link to="/schedule" onClick={() => setIsOpen(false)}>🗓️ Расписание</Link>
-        <Link to="/chat" onClick={() => setIsOpen(false)}>💬 Чат</Link>
-        <Link to="/notifications" onClick={() => setIsOpen(false)}>🔔 Уведомления</Link>
-        {user?.role === "admin" && <Link to="/admin" onClick={() => setIsOpen(false)}>🛠️ Админка</Link>}
-        {user?.role === "admin" && <Link to="/all-homework" onClick={() => setIsOpen(false)}>📚 Все домашки</Link>}
+        <Link to="/" onClick={() => isMobile && setIsOpen(false)}>🏠 Главная</Link>
+        <Link to="/profile" onClick={() => isMobile && setIsOpen(false)}>👤 Профиль</Link>
+        <Link to="/grades" onClick={() => isMobile && setIsOpen(false)}>📊 Оценки</Link>
+        <Link to="/homework" onClick={() => isMobile && setIsOpen(false)}>📘 Домашка</Link>
+        <Link to="/schedule" onClick={() => isMobile && setIsOpen(false)}>🗓️ Расписание</Link>
+        <Link to="/chat" onClick={() => isMobile && setIsOpen(false)}>💬 Чат</Link>
+        <Link to="/notifications" onClick={() => isMobile && setIsOpen(false)}>🔔 Уведомления</Link>
+        {user?.role === "admin" && <Link to="/admin" onClick={() => isMobile && setIsOpen(false)}>🛠️ Админка</Link>}
+        {user?.role === "admin" && <Link to="/all-homework" onClick={() => isMobile && setIsOpen(false)}>📚 Все домашки</Link>}
       </nav>
       <button className="theme-button" onClick={toggleTheme}>
         Сменить тему ({theme === "dark" ? "Тёмная" : "Светлая"})
