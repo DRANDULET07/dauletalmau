@@ -1,7 +1,6 @@
 // RegisterScreen.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../index.css"; хз зач тебе импортировать индекс-css, если у тебя стиль в login-css
 import "./login.css";
 
 export default function RegisterScreen() {
@@ -11,12 +10,24 @@ export default function RegisterScreen() {
     username: "",
     password: "",
     role: "student",
+    avatar: "", // ← добавлено
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setForm((prev) => ({ ...prev, avatar: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleRegister = () => {
@@ -27,13 +38,7 @@ export default function RegisterScreen() {
       return;
     }
 
-    const newUser = {
-      name: form.name,
-      surname: form.surname,
-      username: form.username,
-      password: form.password,
-      role: form.role,
-    };
+    const newUser = { ...form };
 
     localStorage.setItem("users", JSON.stringify([...existingUsers, newUser]));
     alert("Регистрация прошла успешно!");
@@ -81,7 +86,24 @@ export default function RegisterScreen() {
         <option value="admin">Администратор</option>
       </select>
 
-      <button onClick={handleRegister}>Зарегистрироваться</button>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleAvatarChange}
+        style={{ marginTop: "1rem" }}
+      />
+
+      {form.avatar && (
+        <img
+          src={form.avatar}
+          alt="avatar preview"
+          style={{ width: 60, height: 60, borderRadius: "50%", marginTop: 10 }}
+        />
+      )}
+
+      <button onClick={handleRegister} style={{ marginTop: "1rem" }}>
+        Зарегистрироваться
+      </button>
     </div>
   );
 }

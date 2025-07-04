@@ -46,6 +46,7 @@
   padding: 0.6rem 1rem;
   border-radius: 8px;
   transition: background 0.3s ease;
+  font-size: 15px;
 }
 
 .link-box:hover {
@@ -94,24 +95,6 @@
   background-color: #005fc1;
 }
 
-.course-content {
-  flex-grow: 1;
-}
-
-.progress-bar {
-  margin-top: 6px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-bar > div {
-  height: 100%;
-  background-color: #ffffff;
-  border-radius: 5px 0 0 5px;
-  transition: width 0.3s ease;
-}
 .top-banner {
   margin-bottom: 1.5rem;
   padding: 1rem 1.5rem;
@@ -121,6 +104,7 @@
   font-weight: 600;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
+
 .notify-btn {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
@@ -132,8 +116,31 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 .notify-btn:hover {
   background: #005fc1;
+}
+
+.status {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+}
+
+.status.pending {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status.done {
+  background-color: #28a745;
+  color: white;
+}
+
+.status.checking {
+  background-color: #ffc107;
+  color: black;
 }
 
 .modal-overlay {
@@ -164,24 +171,35 @@
   from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.status {
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 6px;
-  margin-left: 6px;
-}
 
-.status.pending {
-  background-color: #dc3545; /* красный */
-  color: white;
-}
+/* 📱 Mobile adaptation */
+@media (max-width: 768px) {
+  .home-grid,
+  .courses-grid,
+  .quick-links {
+    flex-direction: column;
+  }
 
-.status.done {
-  background-color: #28a745; /* зелёный */
-  color: white;
-}
+  .card,
+  .course-card,
+  .link-box {
+    width: 100%;
+  }
 
-.status.checking {
-  background-color: #ffc107; /* жёлтый */
-  color: black;
+  .top-banner {
+    font-size: 1.2rem;
+  }
+
+  .notify-btn {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .link-box {
+    justify-content: center;
+  }
+
+  .courses-section h2 {
+    text-align: center;
+  }
 }

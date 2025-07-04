@@ -9,7 +9,7 @@ export default function Home({ user }) {
   };
 
   return (
-    <div className="content">
+    <div className="content home-wrapper">
       <div className="top-banner">
         <h1>Добро пожаловать, {user?.name || ""} {user?.surname || ""}!</h1>
         <p><strong>Роль:</strong> {user?.role || "Не указана"}</p>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -25,11 +25,23 @@ export default function ScheduleScreen() {
     type: 'registration',
   });
 
+  const [upcomingEvent, setUpcomingEvent] = useState(null);
+
   const handleFilterChange = (type) => {
     setFilters({ ...filters, [type]: !filters[type] });
   };
 
   const filteredEvents = events.filter(event => filters[event.type]);
+
+  useEffect(() => {
+    const now = new Date();
+    const upcoming = filteredEvents
+      .map(e => ({ ...e, dateObj: new Date(e.date) }))
+      .filter(e => e.dateObj >= now)
+      .sort((a, b) => a.dateObj - b.dateObj)[0];
+
+    setUpcomingEvent(upcoming || null);
+  }, [filteredEvents]);
 
   const handleDateClick = (arg) => {
     setNewEvent({ ...newEvent, date: arg.dateStr });
@@ -43,7 +55,7 @@ export default function ScheduleScreen() {
       exam: '#ff6961',
     };
 
-    const newId = Date.now(); // простая генерация ID
+    const newId = Date.now();
 
     setEvents([
       ...events,
@@ -60,26 +72,30 @@ export default function ScheduleScreen() {
   };
 
   const handleEventClick = (clickInfo) => {
-  const { title, extendedProps } = clickInfo.event;
-  const id = parseInt(clickInfo.event._def.publicId);
+    const { title, extendedProps } = clickInfo.event;
+    const id = parseInt(clickInfo.event._def.publicId);
 
-  if (extendedProps.fixed) {
-    alert("Это системное событие и его нельзя удалить.");
-    return;
-  }
+    if (extendedProps.fixed) {
+      alert("Это системное событие и его нельзя удалить.");
+      return;
+    }
 
-  const confirmDelete = window.confirm(`Удалить событие "${title}"?`);
-  if (confirmDelete) {
-    setEvents(events.filter(event => event.id !== id));
-  }
-};
-
+    const confirmDelete = window.confirm(`Удалить событие "${title}"?`);
+    if (confirmDelete) {
+      setEvents(events.filter(event => event.id !== id));
+    }
+  };
 
   return (
     <div className="content">
-      <h2>Расписание</h2>
+      <h2>📅 Расписание</h2>
 
-      {/* Фильтры */}
+      {upcomingEvent && (
+        <div className="highlight-box">
+          <strong>Ближайшее событие:</strong> {upcomingEvent.title} ({upcomingEvent.date})
+        </div>
+      )}
+
       <div style={{ marginBottom: '1rem' }}>
         <label>
           <input type="checkbox" checked={filters.registration} onChange={() => handleFilterChange('registration')} />
@@ -95,7 +111,6 @@ export default function ScheduleScreen() {
         </label>
       </div>
 
-      {/* Календарь */}
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -104,9 +119,14 @@ export default function ScheduleScreen() {
         dateClick={handleDateClick}
         eventClick={handleEventClick}
         height="auto"
+        dayCellDidMount={(info) => {
+          const today = new Date().toISOString().split('T')[0];
+          if (info.dateStr === today) {
+            info.el.style.backgroundColor = "#ffeaa7";
+          }
+        }}
       />
 
-      {/* Форма добавления */}
       {showForm && (
         <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', maxWidth: 400 }}>
           <h4>Добавить событие на {newEvent.date}</h4>

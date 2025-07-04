@@ -1,14 +1,15 @@
-// LoginScreen.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
+import { db } from "../firebase";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function LoginScreen({ setLoggedUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     const user = users.find(
       (u) => u.username === username && u.password === password
@@ -16,7 +17,24 @@ export default function LoginScreen({ setLoggedUser }) {
 
     if (user) {
       localStorage.setItem("loggedUser", JSON.stringify(user));
-      setLoggedUser(user); // сохраняем весь объект пользователя
+      setLoggedUser(user);
+
+      try {
+        const userRef = doc(db, "users", user.name || user.username);
+        await setDoc(
+          userRef,
+          {
+            name: user.name || user.username,
+            role: user.role || "student",
+            isOnline: true,
+            lastActive: serverTimestamp(),
+          },
+          { merge: true }
+        );
+      } catch (e) {
+        console.error("Ошибка при установке статуса онлайн:", e);
+      }
+
       navigate("/");
     } else {
       alert("Неверное имя пользователя или пароль");
@@ -27,7 +45,7 @@ export default function LoginScreen({ setLoggedUser }) {
     <div
       className="content"
       style={{
-        display: "grid", // flex было -> grid поставил
+        display: "grid",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",

@@ -1,6 +1,5 @@
-// ProfileScreen.jsx
 import React, { useState, useEffect } from "react";
-import { User, LogOut, Camera, Trash2 } from "lucide-react";
+import { LogOut, Camera, Trash2 } from "lucide-react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./profile.css";
@@ -14,13 +13,10 @@ export default function ProfileScreen() {
     group: "ИТ-2206",
     faculty: "Факультет цифровых технологий",
   });
-  const [isEditing, setIsEditing] = useState(false);
-  const [avatar, setAvatar] = useState(localStorage.getItem("avatar") || null);
 
-  useEffect(() => {
-    const savedAvatar = localStorage.getItem("avatar");
-    if (savedAvatar) setAvatar(savedAvatar);
-  }, []);
+  const [isEditing, setIsEditing] = useState(false);
+  const [avatar, setAvatar] = useState(() => localStorage.getItem("avatar") || null);
+  const [progress, setProgress] = useState(0); // замените на актуальные данные при необходимости
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -44,27 +40,35 @@ export default function ProfileScreen() {
 
   const initials = `${storedUser?.name?.[0] || ""}${storedUser?.surname?.[0] || ""}`.toUpperCase();
 
+  const getProgressColor = (value) => {
+    if (value >= 75) return "#28a745"; // green
+    if (value >= 40) return "#ffc107"; // yellow
+    return "#dc3545"; // red
+  };
+
   return (
     <div className="content">
       <h2>Личный кабинет</h2>
 
-      <div className="profile-card">
-        <div style={{ position: "relative" }}>
-          {avatar ? (
-            <img src={avatar} alt="avatar" />
-          ) : (
-            <div className="avatar-circle">{initials}</div>
-          )}
-          <label htmlFor="avatar-upload" className="avatar-upload-icon" title="Загрузить аватар">
-            <Camera size={18} />
-          </label>
-          <input
-            id="avatar-upload"
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleAvatarUpload}
-          />
+      <div className="profile-container">
+        <div className="avatar-container">
+          <div className="avatar-edit">
+            {avatar ? (
+              <img src={avatar} alt="avatar" className="avatar-circle" />
+            ) : (
+              <div className="avatar-circle">{initials}</div>
+            )}
+            <label htmlFor="avatar-upload" className="avatar-overlay" title="Загрузить аватар">
+              <Camera size={18} />
+            </label>
+            <input
+              id="avatar-upload"
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleAvatarUpload}
+            />
+          </div>
         </div>
 
         {avatar && (
@@ -76,6 +80,7 @@ export default function ProfileScreen() {
         <h2>{storedUser.name} {storedUser.surname}</h2>
         <p><span className="label">Логин:</span> {storedUser.username}</p>
         <p><span className="label">Роль:</span> {storedUser.role}</p>
+        <p><span className="label">Статус:</span> online</p>
 
         {isEditing ? (
           <>
@@ -91,31 +96,33 @@ export default function ProfileScreen() {
           </>
         )}
 
-        <div className="progress-container">
+        <div className="progress-section">
           <CircularProgressbar
-            value={80}
-            text={`80%`}
+            value={progress}
+            text={`${progress}%`}
+            strokeWidth={10}
             styles={buildStyles({
-              pathColor: "#28a745",
-              textColor: "#28a745",
-              trailColor: "#eee",
+              pathColor: getProgressColor(progress),
+              textColor: getProgressColor(progress),
+              trailColor: "#3a3a3a",
+              textSize: "18px",
+              pathTransitionDuration: 0.8,
             })}
           />
         </div>
+        <p>Выполнено домашних заданий: {progress}%</p>
 
-        <p style={{ marginTop: "0.5rem" }}>Выполнено домашних заданий: 12</p>
-
-        <div className="actions">
+        <div className="action-buttons">
           {isEditing ? (
             <>
-              <button className="edit" onClick={() => setIsEditing(false)}>Сохранить</button>
-              <button className="logout" onClick={() => setIsEditing(false)}>Отмена</button>
+              <button className="edit-btn" onClick={() => setIsEditing(false)}>Сохранить</button>
+              <button className="logout-btn" onClick={() => setIsEditing(false)}>Отмена</button>
             </>
           ) : (
             <>
-              <button className="edit" onClick={() => setIsEditing(true)}>Редактировать</button>
+              <button className="edit-btn" onClick={() => setIsEditing(true)}>Редактировать</button>
               <button
-                className="logout"
+                className="logout-btn"
                 onClick={() => {
                   localStorage.removeItem("loggedUser");
                   window.location.href = "/login";

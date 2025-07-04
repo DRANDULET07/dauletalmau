@@ -1,8 +1,8 @@
 import React from "react";
-import { CheckCircle, Clock, XCircle, Calendar } from "lucide-react";
+import { CheckCircle, Clock, XCircle, Calendar, FileText } from "lucide-react";
 import "./homeworkcard.css";
 
-export default function HomeworkCard({ subject, deadline, status }) {
+export default function HomeworkCard({ subject, deadline, status, fileUrl }) {
   const getStatusContent = () => {
     switch (status) {
       case "done":
@@ -44,6 +44,26 @@ export default function HomeworkCard({ subject, deadline, status }) {
         <strong>Срок:</strong> {deadline}
       </p>
       <p className="status">{icon} {label}</p>
+
+      {fileUrl && (
+        <a
+          href={fileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="download-link"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            marginTop: "8px",
+            textDecoration: "none",
+            color: "#007bff",
+            fontWeight: "bold",
+          }}
+        >
+          <FileText size={16} style={{ marginRight: "6px" }} />
+          Скачать файл
+        </a>
+      )}
     </div>
   );
 }

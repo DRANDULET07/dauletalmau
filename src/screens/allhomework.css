@@ -1,0 +1,95 @@
+.all-homework {
+  padding: 2rem;
+  color: var(--text-color);
+}
+
+.all-homework h2 {
+  margin-bottom: 1rem;
+}
+
+.all-homework table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg); /* 🟡 адаптивно к теме */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.all-homework th,
+.all-homework td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.all-homework th {
+  background-color: #007bff;
+  color: white;
+}
+
+.all-homework td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.all-homework td a:hover {
+  text-decoration: underline;
+}
+
+/* Светлая тема */
+body.light {
+  --text-color: #000;
+  --card-bg: #f8f8f8;
+}
+
+/* Тёмная тема */
+body.dark {
+  --text-color: #fff;
+  --card-bg: #1f1f1f;
+}
+body.dark .all-homework th {
+  background-color: #2a2a2a; /* или другой тёмный */
+  color: white;
+}
+
+body.light .all-homework th {
+  background-color: #f0f0f0;
+  color: black;
+}
+/* Цвета статусов */
+.status.done {
+  color: green;
+  font-weight: bold;
+}
+
+.status.in-progress {
+  color: #f0ad4e;
+  font-weight: bold;
+}
+
+.status.overdue {
+  color: red;
+  font-weight: bold;
+}
+
+/* Стиль таблицы */
+.hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.hw-table th, .hw-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.hw-table thead {
+  background-color: var(--card-bg);
+}
+
+.all-homework select {
+  padding: 5px;
+  border-radius: 5px;
+}

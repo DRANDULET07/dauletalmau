@@ -1,0 +1,19 @@
+.mobile-menu-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  font-size: 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  z-index: 1000;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}

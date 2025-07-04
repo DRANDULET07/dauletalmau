@@ -1,44 +1,63 @@
-import React, { useState } from "react";
+// HomeworkScreen.jsx (обновлённый)
+import React, { useState, useEffect } from "react";
+import { collection, addDoc, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import HomeworkCard from "../../components/ui/HomeworkCard";
-import "../../components/ui/homeworkcard.css";
+import { db, storage } from "../../firebase";
+import "../allhomework.css"; // ✅ Правильный путь
 
 export default function HomeworkScreen() {
   const [filter, setFilter] = useState("all");
-  const [tasks, setTasks] = useState([
-    {
-      subject: "Программирование",
-      description: "Реализовать сортировку массива",
-      deadline: "2025-06-22",
-      status: "in-progress"
-    },
-    {
-      subject: "Критическое мышление",
-      description: "Эссе",
-      deadline: "2025-06-20",
-      status: "done"
-    },
-    {
-      subject: "Алгебра",
-      description: "Задания §3.5",
-      deadline: "2025-06-15",
-      status: "overdue"
-    }
-  ]);
-
+  const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [form, setForm] = useState({ subject: "", deadline: "", status: "in-progress" });
+  const [form, setForm] = useState({
+    subject: "",
+    description: "",
+    deadline: "",
+    status: "in-progress",
+  });
+  const [file, setFile] = useState(null);
+
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "homework"), (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setTasks(data.filter(task => task.student === user.name));
+    });
+    return () => unsub();
+  }, [user.name]);
 
   const filtered = tasks.filter(task => filter === "all" || task.status === filter);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setTasks(prev => [...prev, form]);
-    setForm({ subject: "", deadline: "", status: "in-progress" });
-    setShowModal(false);
+    let fileUrl = "";
+
+    try {
+      if (file) {
+        const storageRef = ref(storage, `homework/${user.name}-${file.name}`);
+        await uploadBytes(storageRef, file);
+        fileUrl = await getDownloadURL(storageRef);
+      }
+
+      await addDoc(collection(db, "homework"), {
+        ...form,
+        student: user.name,
+        fileUrl,
+        timestamp: serverTimestamp(),
+      });
+
+      setForm({ subject: "", description: "", deadline: "", status: "in-progress" });
+      setFile(null);
+      setShowModal(false);
+    } catch (err) {
+      console.error("Ошибка при добавлении:", err);
+    }
   };
 
   return (
-    <div className="content">
+    <div className="content all-homework">
       <h2>Домашние задания</h2>
 
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
@@ -54,11 +73,35 @@ export default function HomeworkScreen() {
         <button onClick={() => setShowModal(true)}>➕ Добавить домашку</button>
       </div>
 
-      <div className="grades-grid">
-        {filtered.map((task, index) => (
-          <HomeworkCard key={index} {...task} />
-        ))}
-      </div>
+      <table className="hw-table">
+        <thead>
+          <tr>
+            <th>Предмет</th>
+            <th>Описание</th>
+            <th>Дедлайн</th>
+            <th>Статус</th>
+            <th>Файл</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filtered.map(task => (
+            <tr key={task.id}>
+              <td>{task.subject}</td>
+              <td>{task.description}</td>
+              <td>{task.deadline}</td>
+              <td>
+                <span className={`status ${task.status}`}>{
+                  task.status === "done" ? "Выполнено" :
+                  task.status === "overdue" ? "Просрочено" : "В процессе"
+                }</span>
+              </td>
+              <td>
+                {task.fileUrl ? <a href={task.fileUrl} target="_blank" rel="noopener noreferrer">Скачать</a> : "-"}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       {showModal && (
         <div className="modal-overlay">
@@ -71,6 +114,12 @@ export default function HomeworkScreen() {
                 value={form.subject}
                 onChange={e => setForm({ ...form, subject: e.target.value })}
                 required
+              />
+              <textarea
+                placeholder="Описание"
+                value={form.description}
+                onChange={e => setForm({ ...form, description: e.target.value })}
+                style={{ resize: "vertical", height: "80px", marginTop: "0.5rem" }}
               />
               <input
                 type="date"
@@ -86,6 +135,14 @@ export default function HomeworkScreen() {
                 <option value="done">Выполнено</option>
                 <option value="overdue">Просрочено</option>
               </select>
+
+              <input
+                type="file"
+                onChange={(e) => setFile(e.target.files[0])}
+                accept=".pdf,.doc,.docx,.txt"
+                style={{ marginTop: "0.5rem" }}
+              />
+
               <div style={{ marginTop: "1rem", display: "flex", justifyContent: "space-between" }}>
                 <button type="submit">Сохранить</button>
                 <button type="button" onClick={() => setShowModal(false)}>Отмена</button>

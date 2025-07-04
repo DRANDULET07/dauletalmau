@@ -1,58 +1,129 @@
-.profile-container {
-  max-width: 420px;
-  margin: 2rem auto;
+/* profile.css */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
+  color: var(--text-color, #ffffff);
+}
+
+.profile-container {
   background: var(--card-bg, #1e1e1e);
-  color: var(--text-color, #f0f0f0);
+  color: var(--text-color, #ffffff);
+  padding: 2.5rem 2rem;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.profile-info {
-  font-size: 15px;
-  line-height: 1.7;
-}
-.profile-info strong {
-  color: #b0d1ff;
-}
-
-.edit-form input {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   width: 100%;
-  margin: 0.3rem 0;
+  max-width: 480px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: bold;
+  color: #aaa;
+}
+
+.avatar-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.avatar-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.delete-avatar-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  margin: 0.5rem 0 1rem;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.delete-avatar-btn:hover {
+  color: #ff0000;
+}
+
+input {
+  width: 100%;
   padding: 0.5rem;
+  font-size: 0.95rem;
+  margin: 0.4rem 0;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 0.95rem;
+  background: #2c2c2c;
+  color: #fff;
 }
 
 .progress-section {
   margin: 1.5rem auto 1rem;
-  width: 90px;
+  width: 120px;
+  height: 120px;
 }
 
 .action-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .edit-btn,
 .logout-btn {
   padding: 0.5rem 1.2rem;
+  border-radius: 8px;
   font-size: 14px;
-  border-radius: 6px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .edit-btn {
   background-color: #007bff;
   color: white;
 }
+
 .edit-btn:hover {
   background-color: #0069d9;
 }
@@ -61,83 +132,7 @@
   background-color: #dc3545;
   color: white;
 }
+
 .logout-btn:hover {
   background-color: #c82333;
-}
-
-/* Аватарка */
-.avatar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.avatar-edit {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.avatar-edit:hover .avatar-circle {
-  transform: scale(1.05);
-}
-
-.avatar-circle {
-  background: linear-gradient(135deg, #FFA500, #FF4500);
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-  overflow: hidden;
-}
-.avatar-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.avatar-overlay {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  background: #ffffff;
-  border-radius: 50%;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-}
-.avatar-overlay svg {
-  color: #666;
-  width: 16px;
-  height: 16px;
-}
-.delete-avatar-btn {
-  background: transparent;
-  color: #ff4d4d;
-  border: none;
-  font-size: 14px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0 auto 0.8rem;
-  transition: color 0.2s ease;
-}
-
-.delete-avatar-btn:hover {
-  color: #ff0000;
 }

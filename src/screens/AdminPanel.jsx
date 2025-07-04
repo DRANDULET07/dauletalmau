@@ -1,9 +1,12 @@
-// src/screens/AdminPanel.jsx
 import React, { useEffect, useState } from "react";
 import "./admin.css";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
 
 export default function AdminPanel({ user }) {
   const [users, setUsers] = useState([]);
+  const [notifText, setNotifText] = useState("");
+  const [notifUser, setNotifUser] = useState("");
 
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
@@ -20,6 +23,27 @@ export default function AdminPanel({ user }) {
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     alert("Пользователь удалён.");
+  };
+
+  const handleSendNotification = async () => {
+    if (!notifText || !notifUser) {
+      alert("Пожалуйста, заполните оба поля.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "notifications"), {
+        userId: notifUser,
+        text: notifText,
+        timestamp: serverTimestamp(),
+      });
+      alert("Уведомление отправлено!");
+      setNotifText("");
+      setNotifUser("");
+    } catch (e) {
+      console.error("Ошибка при отправке уведомления:", e);
+      alert("Ошибка при отправке.");
+    }
   };
 
   return (
@@ -64,8 +88,23 @@ export default function AdminPanel({ user }) {
       </div>
 
       <div className="admin-section">
-        <h3>📢 Объявления</h3>
-        <p>Скоро будет добавлена возможность публиковать новости и уведомления для студентов.</p>
+        <h3>📢 Отправить уведомление</h3>
+        <input
+          type="text"
+          placeholder="Логин получателя (userId)"
+          value={notifUser}
+          onChange={(e) => setNotifUser(e.target.value)}
+          className="admin-input"
+        />
+        <textarea
+          placeholder="Текст уведомления"
+          value={notifText}
+          onChange={(e) => setNotifText(e.target.value)}
+          className="admin-textarea"
+        />
+        <button className="send-btn" onClick={handleSendNotification}>
+          Отправить уведомление
+        </button>
       </div>
     </div>
   );

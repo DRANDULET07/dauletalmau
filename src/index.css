@@ -1,224 +1,102 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+/* index.css — обновлённый файл с адаптацией под мобильные устройства */
 
-body.dark {
-  background-color: #121212;
-  color: white;
-  --sidebar-bg: #1e1e1e;
-  --sidebar-text: #f0f0f0;
-  --sidebar-hover: #333;
-  --sidebar-active: #007bff;
+:root {
+  --sidebar-bg: #2c2c2c;
   --card-bg: #1e1e1e;
   --text-color: #ffffff;
 }
 
-body.light {
-  background-color: #f5f5f5;
-  color: #111;
-  --sidebar-bg: #ffffff;
-  --sidebar-text: #222;
-  --sidebar-hover: #f0f0f0;
-  --sidebar-active: #007bff;
-  --card-bg: #ffffff;
-  --text-color: #000000;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  overflow-x: hidden;
 }
 
 .app-container {
   display: flex;
-  height: 100%;
   min-height: 100vh;
-  overflow: hidden;
-}
-
-.sidebar {
-  width: 180px;
-  background-color: var(--sidebar-bg);
-  color: var(--sidebar-text);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 1rem 0.8rem;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: var(--sidebar-text);
-  padding: 0.5rem 1rem;
-  margin: 0.2rem 0;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.sidebar a:hover {
-  background-color: var(--sidebar-hover);
-}
-
-.sidebar a.active {
-  background-color: var(--sidebar-active);
-  color: #fff;
-}
-
-.sidebar button {
-  margin-top: auto;
-  padding: 0.6rem 1rem;
-  background-color: var(--sidebar-active);
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.sidebar button:hover {
-  background-color: #0056b3;
-}
-
-.logo-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  text-decoration: none;
-  color: var(--sidebar-text);
-}
-
-.logo-img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-.logo-text {
-  margin-top: 6px;
-  font-weight: bold;
-  font-size: 14px;
-  text-align: center;
 }
 
 .content {
   flex: 1;
   padding: 2rem;
-  background-color: inherit;
-  color: inherit;
-}
-
-.card, .course-card, .link-box {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border-radius: 12px;
-  padding: 1.2rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-}
-
-.profile-card {
-  max-width: 420px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 16px;
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  text-align: center;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-.profile-card img,
-.avatar-circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #ccc;
-  margin-bottom: 1rem;
-}
-
-.avatar-circle {
-  background-color: #666;
-  color: white;
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 120px;
-  text-align: center;
-}
-
-.avatar-upload-icon {
-  position: absolute;
-  bottom: 6px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  padding: 6px;
-  color: white;
-}
-
-.delete-avatar-btn {
-  color: red;
-  background: transparent;
-  border: none;
-  font-weight: bold;
-  margin-top: 8px;
-  cursor: pointer;
-}
-
-.profile-card .label {
-  font-weight: bold;
-  color: #888;
-}
-
-.profile-card input {
-  width: 100%;
-  margin: 0.4rem 0;
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
   box-sizing: border-box;
+  margin-left: 240px;
+  transition: margin 0.3s ease;
 }
 
-.profile-card .progress-container {
-  margin: 1.5rem auto;
-  width: 100px;
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  padding: 1rem;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
-.profile-card .actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.profile-card .actions button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border-radius: 6px;
+/* Кнопка меню */
+.menu-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background-color: #2563eb;
+  color: white;
   border: none;
+  border-radius: 10px;
+  padding: 0.6rem;
   cursor: pointer;
 }
 
-.profile-card .actions .edit {
-  background-color: #007bff;
-  color: white;
+
+/* Сайдбар на мобильных */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .menu-button {
+    display: block;
+  }
 }
 
-.profile-card .actions .edit:hover {
-  background-color: #0056b3;
-}
+/* Остальной стиль можно добавить ниже или сохранить прежним */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
 
-.profile-card .actions .logout {
-  background-color: #dc3545;
-  color: white;
-}
+  .main-content {
+    padding-top: 3.5rem;
+  }
 
-.profile-card .actions .logout:hover {
-  background-color: #b52d3b;
+  .menu-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
 }
