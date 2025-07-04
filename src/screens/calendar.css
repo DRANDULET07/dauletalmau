@@ -37,3 +37,68 @@ body.dark .fc .fc-daygrid-day.fc-day-today {
 body.light .fc .fc-daygrid-day.fc-day-today {
   background-color: #fdf5d7 !important;
 }
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .fc {
+    font-size: 12px;
+  }
+
+  .fc .fc-daygrid-event {
+    font-size: 11px;
+    padding: 2px;
+  }
+
+  .fc .fc-col-header-cell-cushion,
+  .fc .fc-col-header-cell-cushion a {
+    font-size: 12px !important;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 12px !important;
+  }
+
+  .highlight-box {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    font-size: 14px;
+  }
+
+  /* Фильтры на мобильных */
+  .content > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content > div:first-of-type label {
+    margin-left: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Форма добавления события */
+  .content > div:last-of-type {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+
+  .content > div:last-of-type input,
+  .content > div:last-of-type select {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    font-size: 16px; /* Предотвращает зум на iOS */
+  }
+
+  .content > div:last-of-type button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+}

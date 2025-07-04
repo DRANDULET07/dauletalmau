@@ -93,3 +93,57 @@ body.light .all-homework th {
   padding: 5px;
   border-radius: 5px;
 }
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .all-homework {
+    padding: 1rem;
+  }
+
+  .all-homework h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Скрываем таблицу на мобильных и показываем карточки */
+  .all-homework table,
+  .hw-table {
+    display: none;
+  }
+
+  /* Создаем мобильные карточки для домашних заданий */
+  .mobile-homework-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-homework-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-homework-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .mobile-homework-card p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+
+  .mobile-homework-card .status {
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+
+  .all-homework select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+    margin-bottom: 1rem;
+  }
+}

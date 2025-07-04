@@ -32,6 +32,7 @@ import { Menu } from "lucide-react";
 export default function App() {
   const [theme, setTheme] = useState("dark");
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const [loggedUser, setLoggedUser] = useState(() => {
     const stored = localStorage.getItem("loggedUser");
@@ -41,6 +42,25 @@ export default function App() {
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
+
+  // Определяем, является ли устройство мобильным
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // На десктопе сайдбар всегда открыт
+  useEffect(() => {
+    if (!isMobile) {
+      setIsOpen(true);
+    }
+  }, [isMobile]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
@@ -92,15 +112,19 @@ export default function App() {
       <div className="app-container">
         {isLoggedIn && (
           <>
-            <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
-              <Menu size={24} />
-            </button>
+            {/* Кнопка меню показывается только на мобильных */}
+            {isMobile && (
+              <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
+                <Menu size={24} />
+              </button>
+            )}
             <Sidebar
               toggleTheme={toggleTheme}
               theme={theme}
               user={loggedUser}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
+              isMobile={isMobile}
             />
           </>
         )}

@@ -48,3 +48,30 @@ body.light .notif-item {
 body.light .notif-item small {
   color: #666;
 }
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .main-screen {
+    padding: 1rem;
+  }
+
+  .main-screen h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .notif-item {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .notif-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .notif-item small {
+    font-size: 0.8rem;
+  }
+}

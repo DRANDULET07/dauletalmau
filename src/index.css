@@ -1,102 +1,169 @@
-/* index.css — обновлённый файл с адаптацией под мобильные устройства */
+/* index.css — обновлённый файл с красивой десктопной версией */
 
 :root {
-  --sidebar-bg: #2c2c2c;
-  --card-bg: #1e1e1e;
-  --text-color: #ffffff;
+  --sidebar-bg: #1a1a1a;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --accent-color: #3b82f6;
+  --border-color: #e2e8f0;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Тёмная тема */
+body.dark {
+  --sidebar-bg: #0f172a;
+  --card-bg: #1e293b;
+  --text-color: #f1f5f9;
+  --border-color: #334155;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-heavy: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--card-bg);
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: var(--text-color);
   overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 .app-container {
   display: flex;
   min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.content {
+body.dark .app-container {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.main-content {
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 3rem;
   box-sizing: border-box;
-  margin-left: 240px;
-  transition: margin 0.3s ease;
+  margin-left: 280px; /* Отступ для сайдбара на десктопе */
+  transition: var(--transition);
+  background: transparent;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 240px;
-  height: 100vh;
-  background-color: var(--sidebar-bg);
-  padding: 1rem;
-  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-/* Кнопка меню */
+/* Кнопка меню - скрыта на десктопе */
 .menu-button {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 1.5rem;
+  left: 1.5rem;
   z-index: 1100;
-  background-color: #2563eb;
+  background: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 10px;
-  padding: 0.6rem;
+  border-radius: 12px;
+  padding: 0.75rem;
   cursor: pointer;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition);
+  display: none; /* По умолчанию скрыта */
 }
 
+.menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
 
 /* Сайдбар на мобильных */
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.mobile-open {
-    transform: translateX(0);
-  }
-
-  .content {
-    margin-left: 0;
+  .main-content {
+    margin-left: 0; /* Убираем отступ для контента на мобильных */
     padding: 1rem;
   }
 
   .menu-button {
-    display: block;
+    display: block; /* Показываем кнопку на мобильных */
   }
 }
 
-/* Остальной стиль можно добавить ниже или сохранить прежним */
+/* ====================== ОБЩИЕ МОБИЛЬНЫЕ СТИЛИ ====================== */
 @media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
-  }
-
+  /* Общие стили для всех экранов */
   .main-content {
-    padding-top: 3.5rem;
+    padding: 1rem;
   }
 
-  .menu-button {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1100;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    font-size: 1rem;
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+  }
+
+  /* Улучшения для форм */
+  input, textarea, select {
+    font-size: 16px !important; /* Предотвращает зум на iOS */
+  }
+
+  /* Улучшения для кнопок */
+  button {
+    min-height: 44px; /* Минимальная высота для удобного нажатия */
+    touch-action: manipulation; /* Улучшает отзывчивость на тач */
+  }
+
+  /* Улучшения для ссылок */
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Улучшения для таблиц */
+  table {
+    font-size: 14px;
+  }
+
+  /* Улучшения для модальных окон */
+  .modal {
+    width: 95% !important;
+    max-width: 400px !important;
+    margin: 1rem auto !important;
+  }
+
+  /* Улучшения для карточек */
+  .ui-card, .card, .news-card, .deadline-card, .event-card {
+    padding: 0.7rem 0.8rem !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    max-width: 100vw !important;
+    box-sizing: border-box;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .ui-button, button {
+    font-size: 15px !important;
+    padding: 0.7rem 1.1rem !important;
+    border-radius: 10px !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    box-sizing: border-box;
+  }
+
+  /* Улучшения для вкладок */
+  .ui-tabs-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ui-tabs-trigger {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .content {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 }
