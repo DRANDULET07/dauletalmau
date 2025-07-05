@@ -1,0 +1,95 @@
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar-overlay.open {
+  width: 100vw;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #1c1c1c;
+  height: 100vh;
+  padding: 1rem;
+  overflow-y: auto;
+  color: white;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.close-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.sidebar-link {
+  display: block;
+  background-color: #2d2d2d;
+  color: white;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.sidebar-link:hover {
+  background-color: #3c3c3c;
+}
+
+.theme-btn {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}

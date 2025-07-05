@@ -1,0 +1,290 @@
+.grade-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  padding: 2.5rem;
+  margin: 1rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  width: 380px;
+  flex-shrink: 0;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.grade-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.grade-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+}
+
+.grade-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: var(--primary-color);
+  line-height: 1.3;
+}
+
+.grade-card p {
+  margin: 0.6rem 0;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+
+.grade-values {
+  margin-top: 2rem;
+  font-size: 1rem;
+  background: rgba(37, 99, 235, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.grade-values p {
+  margin: 0.6rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.grade-values p:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.grades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
+  justify-content: center;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Статусы */
+.grade-status {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.grade-status.light {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.grade-status.dark {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.grade-status.excellent {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.grade-status.good {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.grade-status.satisfactory {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.grade-status.unsatisfactory {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .grade-card {
+    padding: 2rem;
+    width: 340px;
+    border-radius: 20px;
+  }
+  
+  .grade-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .grade-card p {
+    font-size: 1rem;
+  }
+  
+  .grade-values {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .grade-values p {
+    font-size: 0.95rem;
+  }
+  
+  .grade-values p:last-child {
+    font-size: 1.1rem;
+  }
+  
+  .grades-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 1.2rem;
+  }
+  
+  .grade-status {
+    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .grades-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 100vw;
+  }
+  
+  .grade-card {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .grade-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .grade-card p {
+    font-size: 0.95rem;
+  }
+
+  .grade-values {
+    font-size: 0.9rem;
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .grade-values p {
+    font-size: 0.9rem;
+  }
+  
+  .grade-values p:last-child {
+    font-size: 1rem;
+  }
+
+  .grade-status {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1.2rem;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+  .grades-grid {
+    padding: 0.8rem;
+    gap: 1.2rem;
+  }
+  
+  .grade-card {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .grade-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .grade-card p {
+    font-size: 0.9rem;
+  }
+  
+  .grade-values {
+    padding: 1rem;
+    margin-top: 1.2rem;
+  }
+  
+  .grade-values p {
+    font-size: 0.85rem;
+    margin: 0.4rem 0;
+  }
+  
+  .grade-values p:last-child {
+    font-size: 0.95rem;
+  }
+  
+  .grade-status {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+  .grades-grid {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .grade-card {
+    padding: 1rem;
+  }
+  
+  .grade-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .grade-card p {
+    font-size: 0.85rem;
+  }
+  
+  .grade-values {
+    padding: 0.8rem;
+  }
+  
+  .grade-values p {
+    font-size: 0.8rem;
+  }
+  
+  .grade-values p:last-child {
+    font-size: 0.9rem;
+  }
+  
+  .grade-status {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

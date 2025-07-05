@@ -1,0 +1,437 @@
+/* admin.css */
+
+.content {
+  padding: 2.5rem;
+  color: var(--text-color);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.content p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.content strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Секции админки */
+.admin-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.admin-section h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* Таблица пользователей */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+
+.user-table thead {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+}
+
+.user-table th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.user-table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.05);
+  transition: var(--transition);
+}
+
+.user-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Кнопки */
+.delete-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-medium);
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.send-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* Формы */
+.admin-input,
+.admin-textarea {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .content {
+    padding: 2rem;
+  }
+  
+  .content h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content p {
+    font-size: 1.1rem;
+  }
+  
+  .admin-section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .user-table th {
+    padding: 1.2rem 0.8rem;
+    font-size: 1rem;
+  }
+  
+  .user-table td {
+    padding: 1rem 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .delete-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .send-btn {
+    padding: 1rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .admin-input,
+  .admin-textarea {
+    padding: 1rem 1.3rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .content p {
+    font-size: 1rem;
+  }
+  
+  .admin-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .admin-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Таблица становится карточками на мобильных */
+  .user-table {
+    display: none;
+  }
+  
+  .mobile-users {
+    display: block;
+  }
+  
+  .user-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .user-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .user-card-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  .user-card-role {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .user-card-details {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .user-card-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-card-label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+  }
+  
+  .user-card-value {
+    color: var(--text-color);
+    font-size: 0.9rem;
+  }
+  
+  .delete-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .send-btn {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+  
+  .admin-input,
+  .admin-textarea {
+    padding: 1rem;
+    font-size: 16px; /* Предотвращает зум на iOS */
+    border-radius: 10px;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .content p {
+    font-size: 0.95rem;
+  }
+  
+  .admin-section {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .admin-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .user-card {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .user-card-name {
+    font-size: 1rem;
+  }
+  
+  .user-card-role {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .user-card-details {
+    gap: 0.4rem;
+  }
+  
+  .user-card-label,
+  .user-card-value {
+    font-size: 0.85rem;
+  }
+  
+  .delete-btn {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .send-btn {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .admin-input,
+  .admin-textarea {
+    padding: 0.9rem;
+    font-size: 16px;
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+  .content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .content p {
+    font-size: 0.9rem;
+  }
+  
+  .admin-section {
+    padding: 1rem;
+  }
+  
+  .admin-section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .user-card {
+    padding: 0.8rem;
+  }
+  
+  .user-card-name {
+    font-size: 0.95rem;
+  }
+  
+  .user-card-label,
+  .user-card-value {
+    font-size: 0.8rem;
+  }
+  
+  .delete-btn {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .send-btn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Динамические переменные для тем */
+body.light {
+  --text-color: #000;
+  --card-bg: #f9f9f9;
+}
+
+body.dark {
+  --text-color: #fff;
+  --card-bg: #1c1c1c;
+}

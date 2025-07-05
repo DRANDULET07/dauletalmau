@@ -1,0 +1,507 @@
+/* Общие стили для событий */
+.fc .fc-daygrid-event {
+  font-size: 14px;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* === ТЁМНАЯ ТЕМА === */
+body.dark .fc {
+  background-color: #1e1e1e;
+}
+
+/* Цвет названий дней недели (ВС, ПН...) */
+body.dark .fc .fc-col-header-cell {
+  background-color: #1e1e1e;
+}
+
+body.dark .fc .fc-col-header-cell-cushion,
+body.dark .fc .fc-col-header-cell-cushion a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Цвет номеров дней */
+body.dark .fc .fc-daygrid-day-number {
+  color: #cccccc !important;
+}
+
+/* Подсветка сегодняшнего дня */
+body.dark .fc .fc-daygrid-day.fc-day-today {
+  background-color: #333 !important;
+}
+
+/* === СВЕТЛАЯ ТЕМА (опционально) === */
+body.light .fc .fc-daygrid-day.fc-day-today {
+  background-color: #fdf5d7 !important;
+}
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .fc {
+    font-size: 12px;
+  }
+
+  .fc .fc-daygrid-event {
+    font-size: 11px;
+    padding: 2px;
+  }
+
+  .fc .fc-col-header-cell-cushion,
+  .fc .fc-col-header-cell-cushion a {
+    font-size: 12px !important;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 12px !important;
+  }
+
+  .highlight-box {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    font-size: 14px;
+  }
+
+  /* Фильтры на мобильных */
+  .content > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content > div:first-of-type label {
+    margin-left: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Форма добавления события */
+  .content > div:last-of-type {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+
+  .content > div:last-of-type input,
+  .content > div:last-of-type select {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    font-size: 16px; /* Предотвращает зум на iOS */
+  }
+
+  .content > div:last-of-type button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+}
+
+/* calendar.css — полностью адаптивная версия */
+
+.content {
+  padding: 2.5rem;
+  color: var(--text-color);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.highlight-box strong {
+  color: #fbbf24;
+}
+
+/* Фильтры */
+.filter-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.8rem 1.2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.filter-container label:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.filter-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+}
+
+/* Календарь */
+.fc {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+
+.fc-toolbar {
+  margin-bottom: 2rem !important;
+}
+
+.fc-toolbar-title {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: var(--text-color) !important;
+}
+
+.fc-button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 0.8rem 1.5rem !important;
+  font-weight: 600 !important;
+  transition: var(--transition) !important;
+}
+
+.fc-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.fc-daygrid-day {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.fc-daygrid-day-number {
+  color: var(--text-color) !important;
+  font-weight: 600 !important;
+}
+
+.fc-event {
+  border-radius: 8px !important;
+  border: none !important;
+  padding: 0.3rem 0.6rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+}
+
+.fc-event:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+/* Форма добавления события */
+.event-form {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.event-form h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.event-form input,
+.event-form select {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.event-form input:focus,
+.event-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.event-form button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-medium);
+}
+
+.event-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .content {
+    padding: 2rem;
+  }
+  
+  .content h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .highlight-box {
+    padding: 1.3rem 1.8rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-container {
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-container label {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+  
+  .fc {
+    padding: 1.5rem;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.6rem !important;
+  }
+  
+  .event-form {
+    padding: 1.5rem;
+  }
+  
+  .event-form h4 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-box {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-container label {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .fc {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .fc-toolbar {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.4rem !important;
+  }
+
+  .fc-button {
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .fc-daygrid-day-number {
+    font-size: 0.9rem !important;
+  }
+
+  .fc-event {
+    font-size: 0.8rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+
+  .event-form {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .event-form h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .event-form input,
+  .event-form select {
+    padding: 0.9rem 1.2rem;
+    font-size: 16px; /* Предотвращает зум на iOS */
+    margin-bottom: 0.8rem;
+  }
+
+  .event-form button {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+  
+  .content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .highlight-box {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .filter-container {
+    gap: 0.8rem;
+  }
+  
+  .filter-container label {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+  }
+  
+  .fc {
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .fc-button {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .event-form {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+  
+  .event-form h4 {
+    font-size: 1.1rem;
+  }
+  
+  .event-form input,
+  .event-form select {
+    padding: 0.8rem 1rem;
+    font-size: 16px;
+  }
+  
+  .event-form button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+  .content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .highlight-box {
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .fc {
+    padding: 0.6rem;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .event-form {
+    padding: 1rem;
+  }
+  
+  .event-form h4 {
+    font-size: 1rem;
+  }
+}

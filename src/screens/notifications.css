@@ -1,0 +1,207 @@
+/* notifications.css — полностью адаптивная версия */
+
+.main-screen {
+  padding: 2.5rem;
+  color: var(--text-color);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.main-screen h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.main-screen p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin: 2rem 0;
+}
+
+.notif-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.notif-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.notif-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
+.notif-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-heavy);
+  border-color: var(--primary-color);
+}
+
+.notif-item p {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.notif-item small {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  display: block;
+  text-align: left;
+}
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .main-screen {
+    padding: 2rem;
+  }
+  
+  .main-screen h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .main-screen p {
+    font-size: 1.1rem;
+  }
+  
+  .notif-list {
+    gap: 1.2rem;
+  }
+  
+  .notif-item {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .notif-item p {
+    font-size: 1rem;
+  }
+  
+  .notif-item small {
+    font-size: 0.85rem;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .main-screen {
+    padding: 1.5rem;
+  }
+  
+  .main-screen h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .main-screen p {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .notif-list {
+    gap: 1rem;
+  }
+  
+  .notif-item {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .notif-item::before {
+    width: 4px;
+  }
+  
+  .notif-item p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .notif-item small {
+    font-size: 0.8rem;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+  .main-screen {
+    padding: 1rem;
+  }
+  
+  .main-screen h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .main-screen p {
+    font-size: 0.95rem;
+  }
+  
+  .notif-list {
+    gap: 0.8rem;
+  }
+  
+  .notif-item {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .notif-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .notif-item small {
+    font-size: 0.75rem;
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+  .main-screen h2 {
+    font-size: 1.6rem;
+  }
+  
+  .main-screen p {
+    font-size: 0.9rem;
+  }
+  
+  .notif-item {
+    padding: 0.8rem;
+  }
+  
+  .notif-item p {
+    font-size: 0.85rem;
+  }
+  
+  .notif-item small {
+    font-size: 0.7rem;
+  }
+}

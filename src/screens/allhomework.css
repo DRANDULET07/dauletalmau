@@ -1,0 +1,357 @@
+/* allhomework.css — полностью адаптивная версия */
+
+.all-homework {
+  padding: 2.5rem;
+  color: var(--text-color);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.all-homework h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.all-homework h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* Кнопки действий */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.action-buttons button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-medium);
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* График */
+.chart-container {
+  max-width: 500px;
+  margin: 0 auto 3rem;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+
+/* Таблица */
+.hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+}
+
+.hw-table thead {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+}
+
+.hw-table th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.hw-table td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.hw-table tbody tr:hover {
+  background: rgba(37, 99, 235, 0.05);
+  transition: var(--transition);
+}
+
+.hw-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Статусы */
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.status.done {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.in-progress {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status.overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Ссылки на файлы */
+.hw-table a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.hw-table a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .all-homework {
+    padding: 2rem;
+  }
+  
+  .all-homework h2 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .all-homework h4 {
+    font-size: 1.4rem;
+  }
+  
+  .action-buttons {
+    margin: 1.5rem 0;
+  }
+  
+  .action-buttons button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .chart-container {
+    max-width: 450px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .hw-table th {
+    padding: 1.2rem 0.8rem;
+    font-size: 1rem;
+  }
+  
+  .hw-table td {
+    padding: 1rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .all-homework {
+    padding: 1.5rem;
+  }
+  
+  .all-homework h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .all-homework h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 1.5rem 0;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+  
+  .chart-container {
+    max-width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+  }
+  
+  /* Таблица становится карточками на мобильных */
+  .hw-table {
+    display: none;
+  }
+  
+  .mobile-cards {
+    display: block;
+  }
+  
+  .homework-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .homework-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .homework-card-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  .homework-card-status {
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  
+  .homework-card-details {
+    display: grid;
+    gap: 0.8rem;
+  }
+  
+  .homework-card-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .homework-card-label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+  }
+  
+  .homework-card-value {
+    color: var(--text-color);
+    font-size: 0.9rem;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (max-width: 480px) {
+  .all-homework {
+    padding: 1rem;
+  }
+  
+  .all-homework h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .all-homework h4 {
+    font-size: 1.2rem;
+  }
+  
+  .action-buttons button {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .chart-container {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .homework-card {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+  
+  .homework-card-title {
+    font-size: 1rem;
+  }
+  
+  .homework-card-status {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  
+  .homework-card-details {
+    gap: 0.6rem;
+  }
+  
+  .homework-card-label,
+  .homework-card-value {
+    font-size: 0.85rem;
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+  .all-homework h2 {
+    font-size: 1.6rem;
+  }
+  
+  .all-homework h4 {
+    font-size: 1.1rem;
+  }
+  
+  .homework-card {
+    padding: 1rem;
+  }
+  
+  .homework-card-title {
+    font-size: 0.95rem;
+  }
+  
+  .homework-card-label,
+  .homework-card-value {
+    font-size: 0.8rem;
+  }
+}

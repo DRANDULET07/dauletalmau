@@ -1,0 +1,217 @@
+.homework-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  width: 350px;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.homework-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.homework-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* Стили для статусов */
+.homework-card.done {
+  border-left: 6px solid #10b981;
+}
+
+.homework-card.in-progress {
+  border-left: 6px solid #3b82f6;
+}
+
+.homework-card.overdue {
+  border-left: 6px solid #ef4444;
+}
+
+.homework-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.homework-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.deadline {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.deadline-green {
+  color: #10b981;
+}
+
+.deadline-yellow {
+  color: #f59e0b;
+}
+
+.deadline-red {
+  color: #ef4444;
+}
+
+select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+button {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  box-shadow: var(--shadow-medium);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal form input,
+.modal form textarea,
+.modal form select {
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.modal form input:focus,
+.modal form textarea:focus,
+.modal form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.modal form .button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal form button {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.modal form button:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+}
+
+.modal form button[type="button"] {
+  background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+}
+
+.modal form button[type="button"]:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+}
+
+/* ====================== МОБИЛЬНАЯ АДАПТАЦИЯ ====================== */
+@media (max-width: 768px) {
+  .homework-card {
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    font-size: 14px;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .homework-card-title {
+    font-size: 1rem;
+  }
+  .homework-card-date {
+    font-size: 0.95rem;
+  }
+
+  .homework-card h3 {
+    font-size: 1rem;
+  }
+
+  .homework-card p {
+    font-size: 0.9rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 400px;
+    margin: 1rem;
+    padding: 1.2rem;
+  }
+
+  .modal form input,
+  .modal form textarea,
+  .modal form select {
+    font-size: 16px; /* Предотвращает зум на iOS */
+    padding: 0.8rem;
+  }
+
+  .modal form .button-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal form button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 16px;
+  }
+}
